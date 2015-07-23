@@ -12,8 +12,8 @@
   ];
 
   var container = document.getElementById("tableContainer");
-  var table;
-  table = new Handsontable(container, {
+  var hot;
+  hot = new Handsontable(container, {
     data: data,
     rowHeaders: function(row) {
       return "<span style='background-color:green;'>one</span><span style='background-color:red'>two</span>";
@@ -37,43 +37,50 @@
       return html;
     },
     autoColumnSize: true,
-    afterRenderer: function() {
-      var thecount = 0;
-      var totalNumCountries;
-      var countryElem;
-      var indexOfCountryElem;
-      var thsAfterCountryElem;
-      var allThs = $(".htCore tr:first th");
-      totalNumCountries = _.size(_.filter(allThs, function(item){ return $(item).text().trim() !== "" }));
-      var getIndexOfCountryElem = function(elem) {
-        return _.indexOf(allThs, elem)
-      }
-      if(thecount >= totalNumCountries) return;
-        allThs.each(function(item) {
-        var $th = $(this);
-        if($th.text().trim() !== "") {
-          countryElem = $th[0];
-          var index = getIndexOfCountryElem(countryElem);
-          var ths = allThs.slice(index);
-          var text = "";
-          var i = 1;
-          var total = 1;
-          while(text === "" && i < ths.length) {
-            var nextText = $(ths[i]).text().trim();
-            if(nextText === "") {
-              total += 1;
-              i += 1;
-              debugger
-              allThs.remove($(ths[i]));
-            }else {
-             text = "asdfasdf";
-            }
-          }
-          debugger
-          $(countryElem).attr('colspan', total);
-          thecount += 1;
-        }
-      });
-    }
   });
+
+  var __modifyColumnHeaders = function() {
+    //var totalNumCountries;
+    //var countryElem;
+    //var indexOfCountryElem;
+    //var thsAfterCountryElem;
+    //var allThs = $(".htCore tr:first th");
+    //totalNumCountries = _.size(_.filter(allThs, function(item){ return $(item).text().trim() !== "" }));
+    //var getIndexOfCountryElem = function(elem) {
+      //return _.indexOf(allThs, elem)
+    //}
+    //allThs.each(function(item) {
+      //var $th = $(this);
+      //if($th.text().trim() !== "") {
+        //countryElem = $th[0];
+        //var index = getIndexOfCountryElem(countryElem);
+        //var ths = allThs.slice(index);
+        //var text = "";
+        //var i = 1;
+        //var total = 1;
+        //while(text === "" && i < ths.length) {
+          //var nextText = $(ths[i]).text().trim();
+          //if(nextText === "") {
+            //total += 1;
+            //i += 1;
+          //}else {
+            //text = "asdfasdf";
+          //}
+        //}
+        //debugger
+        //$(countryElem).attr('colspan', total);
+      //}
+    //});
+    //allThs.each(function() {
+
+    //});
+    debugger
+    var $columnsTable = $($(".ht_master").find(".htCore"));
+    debugger
+    $columnsTable.find("thead tr:first").html('<th colspan = 2></th><th colspan = 4>U.S.A.</th><th colspan = 3>Canada</th><th colspan = 2>Mexico</th>')
+  };
+
+
+  Handsontable.hooks.once('afterRender', __modifyColumnHeaders, hot);
+  Handsontable.hooks.run(hot, 'afterRender');
 }());
