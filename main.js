@@ -74,10 +74,14 @@
     //allThs.each(function() {
 
     //});
-    debugger
-    var $columnsTable = $($(".ht_master").find(".htCore"));
-    debugger
+    var $columnsTable = $(".ht_master").find(".htCore");
+    var $clone_corner = $($(".ht_clone_corner"));
+    var $clone_left = $($(".ht_clone_left"));
+    var $clone_top = $($(".ht_clone_top"));
     $columnsTable.find("thead tr:first").html('<th colspan = 2></th><th colspan = 4>U.S.A.</th><th colspan = 3>Canada</th><th colspan = 2>Mexico</th>')
+    $clone_corner.find("thead tr:first").html('<th colspan = 2></th><th colspan = 4>U.S.A.</th><th colspan = 3>Canada</th><th colspan = 2>Mexico</th>')
+    $clone_left.find("thead tr:first").html('<th colspan = 2></th><th colspan = 4>U.S.A.</th><th colspan = 3>Canada</th><th colspan = 2>Mexico</th>')
+    $clone_top.find("thead tr:first").html('<th colspan = 2></th><th colspan = 4>U.S.A.</th><th colspan = 3>Canada</th><th colspan = 2>Mexico</th>')
   };
 
 
