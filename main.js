@@ -1,4 +1,4 @@
 (function() {
-  $("#theTableYo").fixedHeaderTable({ fixedColumn: true });
+  //$("#theTableYo").fixedHeaderTable({ fixedColumn: true });
 });
 

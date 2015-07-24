@@ -1,6 +1,8 @@
-table {
+#tableContainer > table {
   text-align: center;
+  table-layout: fixed;
 }
+
 
 th, td {
   height: 100px;
